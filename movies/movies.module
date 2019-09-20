@@ -1,0 +1,13 @@
+<?php
+// go to drupal 8 hook_theme so that we will ge the know which vairble need to pass
+/**
+ * Impleteming hook_theme()
+*/
+function movies_theme($existing, $type, $theme, $path) {
+
+    return array(
+        'movies_list' => array(
+            'variables' => array('items' => array(),'title' => '')
+        )
+    );
+}

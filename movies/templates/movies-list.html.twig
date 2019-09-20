@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+{% set list_show = ['Latest','English','Hindi' ,'Action','Comedy'] %}
+
+{% for list in list_show %}
+    <div class="card" style="width:100%;">
+        <div class="card-header" style="color:white;background-color: #55CADA;">
+            {{ list }}  Movies
+        </div>
+        <div class="card-body">
+            <div class="card-group">
+                {% set foo = 1 %}
+                {% set break = false %}
+                {% for article in items[list] if not break %}
+                    {% if foo >= 6 %}
+                        {% set break = TRUE %}
+                    {% endif %}
+                    <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-success" style="font-size: 14px;font-weight: bold;">
+                            {{ article.name }} 
+                        </div>
+                        <div class="card-body text-success">
+                            <img style='width:100%;height:100%;' src="{{ article.poster }}">  
+                        </div>
+                        <div class="card-footer bg-transparent border-success"><p class="card-text" style="text-align: center;font-size: 14px;">{{ article.language }}</p></div>
+                    </div> 
+                    {% set foo = foo + 1 %}  
+                {% endfor %}
+            </div>
+        </div>
+    </div> 
+{% endfor %}
